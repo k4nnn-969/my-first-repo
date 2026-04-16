@@ -3,12 +3,15 @@ const app = express();
 
 app.use(express.json());
 
-// panggil routes
+// Routes
 const userRoutes = require('./routes/userRoutes');
+const pointRoutes = require('./routes/pointRoutes');
 
-// pakai routes
-app.use('/api', userRoutes);
+// use
+app.use('/api/users', userRoutes);
+app.use('/api/points', pointRoutes);
 
+// jalankan servernya
 app.listen(3000, () => {
   console.log('Server jalan di port 3000');
 });
