@@ -3,12 +3,17 @@ const app = express();
 
 app.use(express.json());
 
-// panggil routes
+// Routes
 const userRoutes = require('./routes/userRoutes');
+const pointRoutes = require('./routes/pointRoutes');
+const rewardRoutes = require('./routes/rewardsRoutes');
 
-// pakai routes
-app.use('/api', userRoutes);
+// use
+app.use('/api/users', userRoutes);
+app.use('/api/points', pointRoutes);
+app.use('/api/rewards', rewardRoutes);
 
+// jalankan servernya
 app.listen(3000, () => {
   console.log('Server jalan di port 3000');
 });
