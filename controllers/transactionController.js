@@ -3,18 +3,20 @@ let transactions = [];
 exports.addTransaction = (userId, type, amount) => {
   transactions.push({
     id: transactions.length + 1,
-    userId,
-    type, // "earn" atau "redeem"
+    userId: userId.toString(), 
+    type,
     amount,
     createdAt: new Date()
   });
+
+  console.log("TRANSACTION:", transactions);
 };
 
 exports.getTransactionsByUser = (req, res) => {
-  const userId = parseInt(req.params.userId);
+  const userId = req.params.userId; 
 
   const userTransactions = transactions.filter(
-    (t) => t.userId === userId
+    (t) => t.userId === userId.toString()
   );
 
   res.json(userTransactions);
@@ -23,3 +25,5 @@ exports.getTransactionsByUser = (req, res) => {
 exports.getAllTransactions = (req, res) => {
   res.json(transactions);
 };
+
+exports.getAllTransactionsData = () => transactions;

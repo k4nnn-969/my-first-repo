@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const { redeemReward } = require('../controllers/redeemController');
+const controller = require('../controllers/redeemController');
 
-router.post('/', redeemReward);
+router.post('/', controller.redeemReward);
+router.get('/:userId', controller.getRedeemHistory);
 
 module.exports = router;
